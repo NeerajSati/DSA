@@ -11,8 +11,6 @@ Constraints
 1 ≤  N  ≤ 30
 -100 ≤ L[i] ≤ 100
 */
-
-
 // { Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
@@ -92,21 +90,23 @@ struct Node
  it should transform the passed linked list */
 void sortList(Node** head)
 {
-    if((*head)==NULL)
+    if((*head)==NULL || (*head)->next == NULL)
     return;
     Node *temp = (*head)->next;
     Node *prev = (*head);
-    while(temp!=NULL)
+    while(temp != NULL)
     {
-        if(temp->data < prev->data)
+        if(temp->data < 0)
         {
             prev->next = temp->next;
             temp->next = (*head);
-            (*head) = temp;
-            temp = prev;
+            *head = temp;
+            temp = prev->next;
+            continue;
         }
-        else
         prev = temp;
-        temp = temp->next;
+        temp=temp->next;
+        
+        
     }
 }
