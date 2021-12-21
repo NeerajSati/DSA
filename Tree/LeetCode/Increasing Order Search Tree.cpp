@@ -21,3 +21,42 @@ The number of nodes in the given tree will be in the range [1, 100].
 0 <= Node.val <= 1000
 */
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<TreeNode *> inorder(TreeNode *root){
+        vector<TreeNode *> arr;
+        if(root == NULL)
+            return arr;
+        vector<TreeNode *> v2 = inorder(root->left);
+        arr.insert(arr.end(), v2.begin(), v2.end());
+        arr.push_back(root);
+        v2 = inorder(root->right);
+        arr.insert(arr.end(), v2.begin(), v2.end());
+        return arr;
+    }
+    TreeNode* increasingBST(TreeNode* root) {
+        vector<TreeNode *> v = inorder(root);
+        TreeNode *newRoot = new TreeNode(-1);
+        TreeNode *prev = newRoot;
+        int n = v.size();
+        for(int i=0;i<n;i++){
+            TreeNode *newRoot = v.at(i);
+            newRoot->left = NULL;
+            newRoot->right = NULL;
+            prev->right = newRoot;
+            prev = prev->right;
+        }
+        return newRoot->right;
+    }
+};
