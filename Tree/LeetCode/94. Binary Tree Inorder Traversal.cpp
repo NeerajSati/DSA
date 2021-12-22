@@ -35,6 +35,8 @@ The number of nodes in the tree is in the range [0, 100].
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//Wild Guess
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
@@ -49,3 +51,37 @@ public:
         return arr;
     }
 };
+
+//Using Stack
+vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> v;
+        stack<TreeNode *> st;
+        TreeNode *curr = root;
+        while(curr!=NULL || st.empty()==false){
+            while(curr!=NULL){
+                st.push(curr);
+                curr = curr->left;
+            }
+            curr = st.top();
+            st.pop();
+            v.push_back(curr->val);
+            curr = curr->right;
+        }
+        return v;
+    }
+
+//Recursive
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> v;
+        inorder(root, v);
+        return v;
+    }
+private: 
+    void inorder(TreeNode *root, vector<int> &v){
+        if(root){
+            inorder(root->left,v);
+            v.push_back(root->val);
+            inorder(root->right,v);
+        }
+    }
