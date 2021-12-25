@@ -18,14 +18,11 @@ Example 3:
 
 Input: root = [0]
 Output: [0]
- 
 
 Constraints:
 
 The number of nodes in the tree is in the range [0, 2000].
 -100 <= Node.val <= 100
- 
-
 Follow up: Can you flatten the tree in-place (with O(1) extra space)?
 */
 
