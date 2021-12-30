@@ -48,7 +48,6 @@ int main()
 
 long long find_multiplication(int a[], int b[], int n, int m)
 {
-    // Complete the function
     int max=a[0],min=b[0];
     for(int i=0;i<n;i++)
     if(a[i]>max)
