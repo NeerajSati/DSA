@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-	//code
 	int t,n,x,low,high,mid,ans;
 	cin>>t;
 	while(t--)
