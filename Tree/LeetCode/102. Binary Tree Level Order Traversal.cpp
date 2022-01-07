@@ -1,11 +1,4 @@
 /*
-102. Binary Tree Level Order Traversal
-Medium
-
-6645
-
-134
-
 Add to List
 
 Share
