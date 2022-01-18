@@ -51,6 +51,5 @@ int main()
          << minmax.min << endl;
     cout << "Maximum element is "
          << minmax.max;
-          
     return 0;
 } 
