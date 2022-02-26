@@ -8,7 +8,7 @@ bool subsetSum (int sum, int val[], int n)
     
     for (int i = 0; i <= n; i++)
         mat[i][0] = true;
-        
+    
     for (int i = 1; i <= sum; i++)
         mat[0][i] = false;
         
@@ -22,6 +22,7 @@ bool subsetSum (int sum, int val[], int n)
                 mat[i][j] = mat[i - 1][j];
         }
     }
+    
     return mat[n][sum];
 }
 
