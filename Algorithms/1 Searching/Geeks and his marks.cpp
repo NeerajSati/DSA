@@ -10,7 +10,6 @@ int main() {
 	    for (int i=0;i<n;i++)
 	    cin>>arr[i];
 	    sort(arr,arr+n);
-	    
 	    high=n-1;
 	    low=0;
 	    ans=n;
