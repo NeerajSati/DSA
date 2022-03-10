@@ -1,7 +1,6 @@
 // { Driver Code Starts
 #include <stdio.h>
 #include <stdlib.h>
-
 /* a Node of the doubly linked list */
 struct Node
 {
