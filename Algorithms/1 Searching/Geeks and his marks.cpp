@@ -25,7 +25,6 @@ int main() {
 	            high=mid-1;
 	            ans=mid;
 	        }
-	        
 	    }
 	    cout<<n-ans<<endl;
 	}
