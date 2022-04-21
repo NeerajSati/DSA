@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int longestCommonSubsequence(string text1, string text2) {
+    int longestCommonSubstring(string text1, string text2) {
         int m = text1.length(),n=text2.length();
         int mat[m+1][n+1];
         for(int i=0;i<=m;i++){
