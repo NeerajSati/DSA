@@ -71,26 +71,36 @@ public:
                     pair<int,int> x = q.front();
                     q.pop();
                     int i = x.first,j = x.second;
-                    if(isPossible(grid,i+1,j,m,n)){
-                      //Increase temp, i.e, one orange rotted, push the rotted orange in queue, and set grid to rotted
-                        temp++;
-                        grid[i+1][j] = 2;
-                        q.push({i+1,j});
-                    }
-                    if(isPossible(grid,i-1,j,m,n)){
-                        temp++;
-                        grid[i-1][j] = 2;
-                        q.push({i-1,j});
-                    }
-                    if(isPossible(grid,i,j+1,m,n)){
-                        temp++;
-                        grid[i][j+1] = 2;
-                        q.push({i,j+1});
-                    }
-                    if(isPossible(grid,i,j-1,m,n)){
-                        temp++;
-                        grid[i][j-1] = 2;
-                        q.push({i,j-1});
+//                     if(isPossible(grid,i+1,j,m,n)){
+//                       //Increase temp, i.e, one orange rotted, push the rotted orange in queue, and set grid to rotted
+//                         temp++;
+//                         grid[i+1][j] = 2;
+//                         q.push({i+1,j});
+//                     }
+//                     if(isPossible(grid,i-1,j,m,n)){
+//                         temp++;
+//                         grid[i-1][j] = 2;
+//                         q.push({i-1,j});
+//                     }
+//                     if(isPossible(grid,i,j+1,m,n)){
+//                         temp++;
+//                         grid[i][j+1] = 2;
+//                         q.push({i,j+1});
+//                     }
+//                     if(isPossible(grid,i,j-1,m,n)){
+//                         temp++;
+//                         grid[i][j-1] = 2;
+//                         q.push({i,j-1});
+//                     }
+                 //Can be reduced to
+                    int myx[4] = {1,-1,0,0};
+                    int myy[4] = {0,0,1,-1};
+                 for(int p=0;p<4;p++){
+                        if(isPossible(grid,i+myx[p],j+myy[p],m,n)){
+                            temp++;
+                            grid[i+myx[p]][j + myy[p]] = 2;
+                            q.push({i+myx[p],j+myy[p]});
+                        }
                     }
                     size--;
                 }
