@@ -30,6 +30,8 @@ isConnected[i][j] is 1 or 0.
 isConnected[i][i] == 1
 isConnected[i][j] == isConnected[j][i]
 */
+
+//Using BFS
 class Solution {
 private:
     void BFS(vector<vector<int>>& isConnected , int n, int source, vector<bool> &visited){
@@ -61,5 +63,32 @@ public:
             }
         }
         return ans;
+    }
+};
+
+
+//Using DFS
+class Solution {
+private:
+    void dfs(vector<vector<int>>& isConnected, vector<bool> &visited, int s, int n){
+        visited[s] = true;
+        for(int i=0;i<n;i++){
+            if(isConnected[s][i] && !visited[i]){
+                dfs(isConnected,visited,i,n);    
+            }
+        }
+    }
+public:
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        int count = 0;
+        vector<bool> visited(n,false);
+        for(int i = 0;i<n;i++){
+            if(!visited[i]){
+                dfs(isConnected,visited,i,n);
+                count++;            
+            }    
+        }
+        return count;
     }
 };
