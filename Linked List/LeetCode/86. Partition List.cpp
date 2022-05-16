@@ -58,3 +58,31 @@ public:
         return lessHead->next;
     }
 };
+
+
+
+//or
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        if(head==NULL || head->next == NULL)
+            return head;
+        ListNode *less = new ListNode(), *lessHead = less;
+        ListNode *more = new ListNode(), *moreHead = more;
+        
+        while(head != NULL){
+            if(head->val < x){
+                less->next = head;
+                less = less->next;
+            }
+            else{
+                more->next = head;
+                more = more->next;
+            }
+            head = head->next;
+        }
+        more->next = NULL;
+        less->next = moreHead->next;
+        return lessHead->next;
+    }
+};
