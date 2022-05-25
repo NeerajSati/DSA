@@ -80,3 +80,22 @@ public:
 };
 
 
+
+class Solution {
+    int solve(vector<int>& nums, int n){
+        vector<int> dp;
+        for(int i=0;i<n;i++){
+            if(dp.empty() || dp[dp.size()-1] < nums[i])
+                dp.push_back(nums[i]);
+            else{
+                auto idx = lower_bound(dp.begin(),dp.end(),nums[i]) - dp.begin();
+                dp[idx] = nums[i];
+            }
+        }
+        return dp.size();
+    }
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        return solve(nums,nums.size());
+    }
+};
