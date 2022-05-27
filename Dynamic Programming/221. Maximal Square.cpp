@@ -56,3 +56,61 @@ public:
         return ans * ans;
     }
 };
+
+
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        vector<int> prev(n,0),curr(n,0);
+        int ans = INT_MIN;
+        for(int i=m-1;i>=0;i--){
+            for(int j=n-1;j>=0;j--){
+                if(i == m-1 || j== n-1){
+                    curr[j] = matrix[i][j] - '0';
+                }
+                else if(matrix[i][j] - '0' == 0){
+                    curr[j] = 0;
+                }
+                else{
+                    curr[j] = 1 + min(curr[j+1], min(prev[j+1],prev[j]));
+                }
+                
+                ans = max(ans,curr[j]);
+            }
+                fill(prev.begin(), prev.end(), 0);
+                swap(prev,curr);
+        }
+        return ans * ans;
+    }
+};
+
+
+
+class Solution {
+public:
+    int maximalSquare(vector<vector<char>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        vector<int> curr(n,0);
+        int ans = INT_MIN,temp,old;
+        for(int i=m-1;i>=0;i--){
+            for(int j=n-1;j>=0;j--){
+                temp = curr[j];
+                if(i == m-1 || j== n-1){
+                    curr[j] = matrix[i][j] - '0';
+                }
+                else if(matrix[i][j] - '0' == 0){
+                    curr[j] = 0;
+                }
+                else{
+                    curr[j] = 1 + min(old, min(curr[j+1],curr[j]));
+                }
+                ans = max(ans,curr[j]);
+                old = temp;
+            }
+        }
+        return ans * ans;
+    }
+};
