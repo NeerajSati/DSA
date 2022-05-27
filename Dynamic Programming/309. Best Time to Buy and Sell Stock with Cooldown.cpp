@@ -50,3 +50,25 @@ public:
         return helper(prices,INT_MAX,0,n,hm);
     }
 };
+
+
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int buy = -prices[0],sell = 0,cool = 0;
+        for(int i=1;i<n;i++){
+            int nsell,nbuy,ncool;
+            
+            nbuy = max(buy, cool - prices[i]);
+            nsell = max(sell, prices[i] + buy);
+            ncool = max(cool,sell);
+            
+            buy = nbuy,cool = ncool, sell = nsell;
+        }
+        
+        return sell;
+    }
+};
