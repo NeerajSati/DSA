@@ -34,22 +34,23 @@
 class Solution {
 private:
     map<pair<int,int>,int> hm;
-    int solve(vector<int>& prices, int curr, int i, int profit) {
+    int solve(vector<int>& prices, int curr, int i) {
         if(i == prices.size())
             return 0;
         if(hm.find({i,curr}) != hm.end())
             return hm[{i,curr}];
+        int profit;
         if(prices[i] < curr){
-            profit = solve(prices,prices[i],i+1,profit);
+            profit = solve(prices,prices[i],i+1);
         }
         else{
-            profit = max(prices[i] - curr + solve(prices,INT_MAX,i+1,profit) , solve(prices,curr,i+1,profit));
+            profit = max(prices[i] - curr + solve(prices,INT_MAX,i+1) , solve(prices,curr,i+1));
         }
         return hm[{i,curr}] = profit;
     }
 public:
     int maxProfit(vector<int>& prices) {
-        return solve(prices,prices[0],0,0);
+        return solve(prices,prices[0],0);
     }
 };
 
