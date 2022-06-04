@@ -55,3 +55,30 @@ public:
         return ans;
     }
 };
+
+
+
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+        int n = nums.size();
+        int i=0,j=0,sum=0,zero=0,ans=0;
+        while(j<n){
+            sum += nums[j];
+            
+            if(nums[j] == 0){
+                zero++;
+                while(zero > 1){
+                    sum-=nums[i];
+                    if(nums[i] == 0)
+                        zero--;
+                    i++;
+                }
+            }
+            
+            ans = max(ans,j-i);
+            j++;
+        }
+        return ans;
+    }
+};
